@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibelink - Connect Your Vibes</title>
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Enhanced Loading Screen -->
+    <div id="loadingScreen" class="loading-screen hidden">
+        <div class="loading-logo">
+            <svg class="logo-icon" viewBox="0 0 100 100" width="80" height="80">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FFD700"/>
+                        <stop offset="100%" style="stop-color:#FFA500"/>
+                    </linearGradient>
+                </defs>
+                <path d="M20 80 L50 20 L80 80 M35 60 L65 60" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="25" cy="25" r="3" fill="url(#logoGradient)"/>
+                <circle cx="75" cy="25" r="3" fill="url(#logoGradient)"/>
+                <circle cx="50" cy="15" r="3" fill="url(#logoGradient)"/>
+                <line x1="25" y1="25" x2="50" y2="15" stroke="url(#logoGradient)" stroke-width="2"/>
+                <line x1="75" y1="25" x2="50" y2="15" stroke="url(#logoGradient)" stroke-width="2"/>
+            </svg>
+            <h1 class="loading-text">Vibelink</h1>
+        </div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="page-container">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="app-logo-container">
+                        <svg class="logo-icon" viewBox="0 0 100 100" width="60" height="60">
+                            <defs>
+                                <linearGradient id="authLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFD700"/>
+                                    <stop offset="100%" style="stop-color:#FFA500"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M20 80 L50 20 L80 80 M35 60 L65 60" stroke="url(#authLogoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="25" cy="25" r="3" fill="url(#authLogoGradient)"/>
+                            <circle cx="75" cy="25" r="3" fill="url(#authLogoGradient)"/>
+                            <circle cx="50" cy="15" r="3" fill="url(#authLogoGradient)"/>
+                            <line x1="25" y1="25" x2="50" y2="15" stroke="url(#authLogoGradient)" stroke-width="2"/>
+                            <line x1="75" y1="25" x2="50" y2="15" stroke="url(#authLogoGradient)" stroke-width="2"/>
+                        </svg>
+                        <h1 class="app-logo">Vibelink</h1>
+                    </div>
+                    <p class="auth-subtitle">Connect Your Vibes</p>
+                </div>
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label" for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Sign In</button>
+                    <div id="loginError" class="error-message hidden"></div>
+                </form>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+                    <div class="demo-accounts">
+                        <h4>Demo Accounts:</h4>
+                        <button class="demo-account-btn" data-email="abc@gmail.com" data-password="Admin@123">Dead_Coder</button>
+                        <button class="demo-account-btn" data-email="xyz@gmail.com" data-password="Admin@123">Lady_Bug</button>
+                        <button class="demo-account-btn" data-email="mno@gmail.com" data-password="Admin@123">Ronin</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Page -->
+    <div id="signupPage" class="page-container hidden">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="app-logo-container">
+                        <svg class="logo-icon" viewBox="0 0 100 100" width="60" height="60">
+                            <defs>
+                                <linearGradient id="signupLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFD700"/>
+                                    <stop offset="100%" style="stop-color:#FFA500"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M20 80 L50 20 L80 80 M35 60 L65 60" stroke="url(#signupLogoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="25" cy="25" r="3" fill="url(#signupLogoGradient)"/>
+                            <circle cx="75" cy="25" r="3" fill="url(#signupLogoGradient)"/>
+                            <circle cx="50" cy="15" r="3" fill="url(#signupLogoGradient)"/>
+                            <line x1="25" y1="25" x2="50" y2="15" stroke="url(#signupLogoGradient)" stroke-width="2"/>
+                            <line x1="75" y1="25" x2="50" y2="15" stroke="url(#signupLogoGradient)" stroke-width="2"/>
+                        </svg>
+                        <h1 class="app-logo">Vibelink</h1>
+                    </div>
+                    <p class="auth-subtitle">Join the Community</p>
+                </div>
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label" for="signupDisplayName">Display Name</label>
+                        <input type="text" id="signupDisplayName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signupUsername">Username</label>
+                        <input type="text" id="signupUsername" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" class="form-control" required>
+                        <small class="password-requirements">At least 6 characters, 1 uppercase, 1 number, 1 special character</small>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Create Account</button>
+                    <div id="signupError" class="error-message hidden"></div>
+                </form>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" id="showLogin">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="hidden">
+        <!-- Header Navigation -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="header-logo clickable" id="logoBtn">
+                        <svg class="logo-icon" viewBox="0 0 100 100" width="40" height="40">
+                            <defs>
+                                <linearGradient id="headerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:var(--logo-primary)"/>
+                                    <stop offset="100%" style="stop-color:var(--logo-secondary)"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M20 80 L50 20 L80 80 M35 60 L65 60" stroke="url(#headerLogoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="25" cy="25" r="3" fill="url(#headerLogoGradient)"/>
+                            <circle cx="75" cy="25" r="3" fill="url(#headerLogoGradient)"/>
+                            <circle cx="50" cy="15" r="3" fill="url(#headerLogoGradient)"/>
+                            <line x1="25" y1="25" x2="50" y2="15" stroke="url(#headerLogoGradient)" stroke-width="2"/>
+                            <line x1="75" y1="25" x2="50" y2="15" stroke="url(#headerLogoGradient)" stroke-width="2"/>
+                        </svg>
+                        <h1 class="app-logo">Vibelink</h1>
+                    </div>
+                </div>
+                
+                <nav class="header-nav">
+                    <button class="nav-btn active" data-page="feed">Feed</button>
+                    <button class="nav-btn" data-page="profile">Profile</button>
+                    <button class="nav-btn" data-page="notifications">
+                        Notifications
+                        <span id="notificationBadge" class="notification-badge hidden">0</span>
+                    </button>
+                    <button class="nav-btn" data-page="messages">Messages</button>
+                </nav>
+
+                <div class="header-right">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search users...">
+                        <div id="searchResults" class="search-results hidden"></div>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+                    <div class="user-menu">
+                        <button class="user-menu-btn" id="userMenuBtn">
+                            <img id="currentUserAvatar" src="" alt="User" class="avatar avatar--sm">
+                        </button>
+                        <div id="userDropdown" class="user-dropdown hidden">
+                            <div class="user-dropdown-header">
+                                <img id="dropdownUserAvatar" src="" alt="User" class="avatar avatar--md">
+                                <div class="user-info">
+                                    <div class="user-name" id="dropdownUserName"></div>
+                                    <div class="user-email" id="dropdownUserEmail"></div>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" id="switchUserBtn">Switch User</button>
+                            <button class="dropdown-item" id="logoutBtn">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-profile">
+                    <div class="profile-header">
+                        <img id="sidebarAvatar" src="" alt="Profile" class="avatar avatar--lg">
+                        <div class="profile-info">
+                            <h3 id="sidebarDisplayName" class="profile-name"></h3>
+                            <p id="sidebarUsername" class="profile-username"></p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="sidebarPosts">0</span>
+                            <span class="stat-label">Posts</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="sidebarFollowing">0</span>
+                            <span class="stat-label">Following</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="sidebarFollowers">0</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h4>Trending Topics</h4>
+                    <div class="trending-topics" id="trendingTopics"></div>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Feed Page -->
+                <div id="feedPage" class="page active">
+                    <div class="feed-container">
+                        <div id="postsContainer" class="posts-container"></div>
+                    </div>
+                </div>
+
+                <!-- Profile Page -->
+                <div id="profilePage" class="page hidden">
+                    <div class="profile-container">
+                        <div class="profile-cover">
+                            <div class="profile-cover-gradient"></div>
+                        </div>
+                        <div class="profile-header-section">
+                            <div class="profile-avatar-container">
+                                <img id="profileAvatar" src="" alt="Profile" class="avatar avatar--xl">
+                                <button id="changeAvatarBtn" class="change-avatar-btn">📷</button>
+                            </div>
+                            <div class="profile-info-container">
+                                <h1 id="profileDisplayName" class="profile-display-name"></h1>
+                                <p id="profileUsername" class="profile-username-text"></p>
+                                <p id="profileBio" class="profile-bio"></p>
+                                <div class="profile-meta">
+                                    <span class="profile-meta-item">📍 <span id="profileLocation">San Francisco, CA</span></span>
+                                    <span class="profile-meta-item">📅 Joined <span id="profileJoinDate">January 2023</span></span>
+                                    <span class="profile-meta-item">🌐 <a href="#" id="profileWebsite" target="_blank">website.com</a></span>
+                                </div>
+                            </div>
+                            <div class="profile-actions-container">
+                                <button id="editProfileBtn" class="btn btn--outline">Edit Profile</button>
+                                <button id="followBtn" class="btn btn--primary hidden">Follow</button>
+                            </div>
+                        </div>
+                        <div class="profile-stats-grid">
+                            <div class="profile-stat-card">
+                                <span class="stat-number" id="profilePosts">0</span>
+                                <span class="stat-label">Posts</span>
+                            </div>
+                            <div class="profile-stat-card">
+                                <span class="stat-number" id="profileFollowing">0</span>
+                                <span class="stat-label">Following</span>
+                            </div>
+                            <div class="profile-stat-card">
+                                <span class="stat-number" id="profileFollowers">0</span>
+                                <span class="stat-label">Followers</span>
+                            </div>
+                        </div>
+                        <div class="profile-posts-section">
+                            <div class="profile-posts-header">
+                                <h3>Posts</h3>
+                            </div>
+                            <div class="profile-posts-grid" id="profilePosts"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Page -->
+                <div id="notificationsPage" class="page hidden">
+                    <div class="notifications-container">
+                        <h2>Notifications</h2>
+                        <div id="notificationsList" class="notifications-list">
+                            <div class="empty-state">
+                                <p>No notifications yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages Page -->
+                <div id="messagesPage" class="page hidden">
+                    <div class="messages-container">
+                        <h2>Messages</h2>
+                        <div class="empty-state">
+                            <p>Messages feature coming soon!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="bottom-nav" id="bottomNav">
+            <button class="bottom-nav-btn active" data-page="feed">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Feed</span>
+            </button>
+            <button class="bottom-nav-btn" data-page="profile">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Profile</span>
+            </button>
+            <button class="bottom-nav-btn" data-page="notifications">
+                <span class="nav-icon">🔔</span>
+                <span class="nav-label">Notifications</span>
+            </button>
+            <button class="bottom-nav-btn" data-page="messages">
+                <span class="nav-icon">💬</span>
+                <span class="nav-label">Messages</span>
+            </button>
+        </nav>
+
+        <!-- Floating Action Button -->
+        <button class="fab" id="createPostBtn" title="Create Post">
+            <span class="fab-icon">✏️</span>
+        </button>
+    </div>
+
+    <!-- Post Creation Modal -->
+    <div id="postModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="postModalTitle">Create Post</h3>
+                <button class="modal-close" id="closePostModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="postForm">
+                    <div class="form-group">
+                        <textarea id="postContent" class="form-control post-textarea" placeholder="What's on your mind?" maxlength="280"></textarea>
+                        <div class="character-counter">
+                            <span id="charCount">0</span>/280
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Add Image (Optional)</label>
+                        <input type="file" id="postImage" accept="image/*" class="form-control">
+                        <div id="imagePreview" class="image-preview hidden"></div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn--secondary" id="cancelPost">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avatar Selection Modal -->
+    <div id="avatarModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Choose Avatar</h3>
+                <button class="modal-close" id="closeAvatarModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-grid" id="avatarGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Switch Modal -->
+    <div id="userSwitchModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Switch User</h3>
+                <button class="modal-close" id="closeUserSwitchModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="user-list" id="userSwitchList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Post Modal -->
+    <div id="shareModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share Post</h3>
+                <button class="modal-close" id="closeShareModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="shareForm">
+                    <div class="form-group">
+                        <textarea id="shareMessage" class="form-control" placeholder="Add a message (optional)" maxlength="280"></textarea>
+                    </div>
+                    <div class="original-post-preview" id="originalPostPreview"></div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn--secondary" id="cancelShare">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Share to Feed</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
